@@ -28,7 +28,9 @@ This middleware may also be diabled on a per-environment basis with:
 
 It is disabled by default for `development` environments, but may be enabled there using the above setting.
 
-`serve_static_assets` or `assets.compile` must be true or the middleware will disable itself.
+`serve_static_assets` or `assets.compile` must be changed to true or the middleware will disable itself:
+
+    config.serve_static_assets = true
 
 
 ## Installation
