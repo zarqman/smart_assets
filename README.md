@@ -2,21 +2,23 @@
 
 SmartAssets is a Rack Middleware for Rails that enables delivery of non-digest assets when using the default asset pipeline.
 
-It solves the problem of production environment requests for assets (eg: application.css) returning a 404 because they do not contain a digest (eg: application-1c8db23293725a8857e5132d59211909.css).
+It solves the problem of production environment requests for assets (eg: `application.css`) returning a 404 because they do not contain a digest (eg: `application-1c8db23293725a8857e5132d59211909.css`).
 
 In general, Rails' default behavior of requiring a digest is a good idea. Serving asset files without a digest can easily result in assets being cached for long periods of time, making them impossible to update. Consider yourself warned.
 
 At the same time, there are legitimate reasons to serve assets without a digest in the name, among them using assets with 404 and other error pages and with 3rd-party applications and sites.
 
+## Usage
+
 This middleware works by reading the sprockets manifest file and internally changing the HTTP request to reflect the digested name. If your manifest is out of date, you will still get 404s.
 
-In order to minimize the risks of long caching while using this gem, requests where the requested filename is mutated will set Cache-Control: public, max-age=60.
+In order to minimize the risks of long caching while using this gem, requests where the requested filename is mutated will set `Cache-Control: public,max-age=60`.
 
 This can configured in your environment files (or an initializer) using:
 
-    config.smart_assets.cache_control = 'public, max-age=60'
+    config.smart_assets.cache_control = 'public,max-age=60'
 
-Max-age is in seconds. Caching by browsers and proxies can be disabled entirely with:
+`max-age` is in seconds. Caching by browsers and proxies can be disabled entirely with:
 
     config.smart_assets.cache_control = 'max-age=0,no-cache,no-store'
 
@@ -24,7 +26,9 @@ This middleware may also be diabled on a per-environment basis with:
 
     config.smart_assets.serve_non_digest_assets = false
 
-Note that `serve_static_assets` or `assets.compile` must be true or the middleware will disable itself.
+It is disabled by default for `development` environments, but may be enabled there using the above setting.
+
+`serve_static_assets` or `assets.compile` must be true or the middleware will disable itself.
 
 
 ## Installation
