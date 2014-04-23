@@ -14,11 +14,11 @@ This middleware works by reading the sprockets manifest file and internally chan
 
 In order to minimize the risks of long caching while using this gem, requests where the requested filename is mutated will set `Cache-Control: public,max-age=60`.
 
-This can configured in your environment files (or an initializer) using:
+This can configured in your environment files (or an initializer). `max-age` is in seconds. If you've configured apache or nginx to set Cache-Control, you may need to ensure that configuration doesn't override this.
 
     config.smart_assets.cache_control = 'public,max-age=60'
 
-`max-age` is in seconds. Caching by browsers and proxies can be disabled entirely with:
+Caching by browsers and proxies can be disabled entirely with:
 
     config.smart_assets.cache_control = 'max-age=0,no-cache,no-store'
 
