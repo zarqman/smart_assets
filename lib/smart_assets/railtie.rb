@@ -11,7 +11,7 @@ module SmartAssets
         prefix = app.config.smart_assets.prefix || app.config.assets.prefix || '/assets'
         cc = app.config.smart_assets.cache_control
 
-        if app.config.serve_static_assets || app.config.assets.compile
+        if app.config.serve_static_assets || app.config.assets.compile || app.config.serve_static_files
           app.middleware.insert_after(::Rack::Sendfile, SmartAssets::Rack, prefix, cc)
         end
       end
