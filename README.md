@@ -32,6 +32,12 @@ It is disabled by default for `development` environments, but may be enabled the
 
     config.serve_static_assets = true
 
+As of Rails 4.2 `serve_static_assets` has been renamed to `serve_static_files`. You should use:
+
+    config.serve_static_assets = true
+
+if you are on Rails 4.2.
+
 
 ## Installation
 
