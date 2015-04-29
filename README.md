@@ -28,9 +28,10 @@ This middleware may also be diabled on a per-environment basis with:
 
 It is disabled by default for `development` environments, but may be enabled there using the above setting.
 
-`serve_static_assets` or `assets.compile` must be changed to true or the middleware will disable itself:
+`serve_static_files` (`serve_static_assets` in Rails 4.0-4.1), or `assets.compile` must be changed to true or the middleware will disable itself:
 
-    config.serve_static_assets = true
+    config.serve_static_files = true  # Rails 4.2+
+    config.serve_static_assets = true # Rails 4.0 & 4.1
 
 
 ## Installation
