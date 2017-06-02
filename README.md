@@ -14,7 +14,7 @@ This middleware works by reading the sprockets manifest file and internally chan
 
 In order to minimize the risks of long caching while using this gem, requests where the requested filename is mutated will set `Cache-Control: public,max-age=60`.
 
-This can configured in your environment files (or an initializer). `max-age` is in seconds. If you've configured apache or nginx to set Cache-Control, you may need to ensure that configuration doesn't override this.
+This can be configured in your environment files (or an initializer). `max-age` is in seconds. If you've configured apache or nginx to set Cache-Control, you may need to ensure that configuration doesn't override this.
 
     config.smart_assets.cache_control = 'public,max-age=60'
 
@@ -26,12 +26,9 @@ This middleware may also be diabled on a per-environment basis with:
 
     config.smart_assets.serve_non_digest_assets = false
 
-It is disabled by default for `development` environments, but may be enabled there using the above setting.
+The default is disabled for `development` and enabled for all other environments.
 
-`serve_static_files` (`serve_static_assets` in Rails 4.0-4.1), or `assets.compile` must be changed to true or the middleware will disable itself:
-
-    config.serve_static_files = true  # Rails 4.2+
-    config.serve_static_assets = true # Rails 4.0 & 4.1
+When this middleware is enabled for a given environment, it automatically enables serving of static files.
 
 
 ## Installation

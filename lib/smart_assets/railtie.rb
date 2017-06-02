@@ -11,11 +11,15 @@ module SmartAssets
         prefix = app.config.smart_assets.prefix || app.config.assets.prefix || '/assets'
         cc = app.config.smart_assets.cache_control
 
-        serve_static = app.config.respond_to?(:serve_static_files) ? app.config.serve_static_files : app.config.serve_static_assets
-
-        if serve_static || app.config.assets.compile
-          app.middleware.insert_after(::Rack::Sendfile, SmartAssets::Rack, prefix, cc)
+        if app.config.respond_to?(:public_file_server)
+          app.config.public_file_server.enabled = true  # >= 5.0
+        elsif app.config.respond_to?(:serve_static_files)
+          app.config.serve_static_files = true          #  = 4.2
+        else
+          app.config.serve_static_assets = true         # <= 4.1
         end
+
+        app.middleware.insert_after(::Rack::Sendfile, SmartAssets::Rack, prefix, cc)
       end
     end
 
