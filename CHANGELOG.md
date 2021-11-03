@@ -1,3 +1,4 @@
+- Fix Ruby deprecation
 - Add tests
 
 #### 0.4.0

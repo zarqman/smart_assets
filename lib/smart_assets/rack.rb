@@ -13,7 +13,7 @@ module SmartAssets
       end
 
       digest_path = File.join(manifest.dir, digest_asset)
-      if File.exists?(digest_path)
+      if File.exist?(digest_path)
         env['PATH_INFO'] = "#{@prefix}/#{digest_asset}"
       end
       status, headers, body = @app.call(env)
