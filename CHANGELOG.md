@@ -1,3 +1,5 @@
+- Add tests
+
 #### 0.4.0
 
 - Fix Rails 5.1 compatibility
