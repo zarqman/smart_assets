@@ -1,4 +1,7 @@
+#### 0.5.0
+
 - Fix Ruby deprecation
+- Confirmed working on Rails 6 and 7
 - Add tests
 
 #### 0.4.0
