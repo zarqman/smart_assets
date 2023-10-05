@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SmartAssets
   class Rack
 
@@ -18,6 +20,15 @@ module SmartAssets
       end
       status, headers, body = @app.call(env)
       if [200, 206].include?(status)
+        # rack 2 expects Mixed-Case headers, while rack 3 expects lower-case. rails doesn't ensure
+        # either one. normal controller actions use ActionDispatch::Response::Headers, which maps
+        # to rack 2's HeaderHash or rack 3's Headers, both of which are case-insensitive extensions
+        # to Hash. however, some responses (ActionDispatch::Static among them), just use Hash.
+        # more, Static relies on the user-configurable public_file_server.headers setting, which
+        # may have unpredictable casing regardless of the rails or rack version.
+        headers = ActionDispatch::Response::Headers[headers] if defined? ActionDispatch::Response::Headers
+
+        # keep Mixed-Case as long as supporting rails <= 7.0 or rack 2
         headers['Cache-Control'] = @cache_control
         headers['ETag'] ||= %("#{digest(digest_asset)}")
       end

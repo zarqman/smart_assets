@@ -33,10 +33,10 @@ class SmartAssetsTest < ActionDispatch::IntegrationTest
     assert_equal 'public,max-age=60', response.headers['cache-control'], 'should come from smart_assets'
     assert_equal %Q{"#{app_css_info[:sha256]}"}, response.headers['etag']
   end
-  
+
   test "POST properly errors" do
     post '/assets/application.css'
-    assert_response 404
+    assert_response 405
   end
 
 
