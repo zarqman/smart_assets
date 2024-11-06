@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["lib/**/*", "LICENSE.txt", "Rakefile", "README.md"]
 
-  spec.add_dependency 'rails', '>= 6.1', '< 7.2'
+  spec.add_dependency 'rails', '>= 6.1', '< 8.0'
   spec.add_dependency 'sprockets-rails', '>= 3', '< 4'
 
   spec.add_development_dependency "bundler"

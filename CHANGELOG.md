@@ -1,3 +1,8 @@
+#### 1.1.0
+
+- Support Rails 7.2
+
+
 #### 1.0.0
 
 - Support Rack 3 and Rails 7.1
