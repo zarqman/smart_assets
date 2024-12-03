@@ -1,3 +1,8 @@
+#### 1.2.0
+
+- Support Rails 8.0
+
+
 #### 1.1.0
 
 - Support Rails 7.2
