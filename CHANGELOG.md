@@ -1,12 +1,14 @@
+#### 1.3.0
+
+- Allow Rails 8.1 and newer
+
 #### 1.2.0
 
 - Support Rails 8.0
 
-
 #### 1.1.0
 
 - Support Rails 7.2
-
 
 #### 1.0.0
 
@@ -15,13 +17,11 @@
   - (Breaking) Drop support for Rails 4.x, 5.x, 6.0
   - (Breaking) Drop support for sprockets-rails 2.x
 
-
 #### 0.5.0
 
 - Fix Ruby deprecation
 - Confirmed working on Rails 6 and 7
 - Add tests
-
 
 #### 0.4.0
 
@@ -29,11 +29,9 @@
 - Instead of requiring static file serving to be enabled in advance, turn it on
   automatically.
 
-
 #### 0.3.0
 
 - Support Rails 5.0
-
 
 #### 0.2.0
 

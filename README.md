@@ -1,6 +1,6 @@
 # SmartAssets
 
-SmartAssets is a Rack Middleware for Rails that enables delivery of non-digest assets when using the default asset pipeline.
+SmartAssets is a Rack Middleware for Rails that enables delivery of non-digest assets when using Sprockets for the asset pipeline.
 
 It solves the problem of production environment requests for assets (eg: `application.css`) returning a 404 because they do not contain a digest (eg: `application-1c8db23293725a8857e5132d59211909.css`).
 
@@ -14,7 +14,7 @@ This middleware works by reading the sprockets manifest file and internally chan
 
 In order to minimize the risks of long caching while using this gem, requests where the requested filename is mutated will set `Cache-Control: public,max-age=60`.
 
-This can be configured in your environment files (or an initializer). `max-age` is in seconds. If you've configured apache or nginx to set Cache-Control, you may need to ensure that configuration doesn't override this.
+This can be configured in your environment files (or an initializer). `max-age` is in seconds. If you've configured Apache, Nginx, Traefik, or any other reverse proxy or load balancer to set Cache-Control, you may need to ensure that configuration doesn't override this.
 
     config.smart_assets.cache_control = 'public,max-age=60'
 
@@ -40,6 +40,13 @@ Add this line to your application's Gemfile:
 And then execute:
 
     $ bundle
+
+
+## Compatibility
+
+Works with `sprockets-rails` 3.x. `propshaft` not presently supported.
+
+Tested against the latest Rails, but should work from Rails 6.1 onward.
 
 
 ## Contributing

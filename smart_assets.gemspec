@@ -10,11 +10,15 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/zarqman/smart_assets"
   spec.license       = "MIT"
 
-  spec.metadata["changelog_uri"] = "https://github.com/zarqman/smart_assets/blob/master/CHANGELOG.md"
+  spec.metadata = {
+    'homepage_uri' => spec.homepage,
+    'source_code_uri' => spec.homepage,
+    'changelog_uri' => 'https://github.com/zarqman/smart_assets/blob/master/CHANGELOG.md'
+  }
 
   spec.files = Dir["lib/**/*", "LICENSE.txt", "Rakefile", "README.md"]
 
-  spec.add_dependency 'rails', '>= 6.1', '< 8.1'
+  spec.add_dependency 'rails', '>= 6.1'
   spec.add_dependency 'sprockets-rails', '>= 3', '< 4'
 
   spec.add_development_dependency "bundler"
