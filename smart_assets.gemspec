@@ -20,8 +20,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 6.1'
   spec.add_dependency 'sprockets-rails', '>= 3', '< 4'
-
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "minitest-reporters"
-  spec.add_development_dependency "rake"
 end

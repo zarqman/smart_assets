@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in smart_assets.gemspec
 gemspec
 
+gem 'minitest-reporters'
+
 gem 'rails', '~> 8.1.0'
 # gem 'rails', '~> 8.0.0'
   # gem 'rack', '~> 3'
